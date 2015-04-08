@@ -2,26 +2,6 @@
 require 'fog/azure'
 ENV['RAILS_ENV'] ||= 'test'
 
-# Create a fake provisioner class to store fake credentials for testing
-class Provisioner
-  attr_reader :order_item
-
-  # TODO: Better testing system
-  ::Fog.mock! # Set fog as mock.
-
-  def initialize(order_item)
-    @order_item = order_item
-  end
-
-  def self.provision(order_item_id)
-    perform(order_item_id, :critical_error) { |order_item| new(order_item).provision }
-  end
-
-  def self.retire(order_item_id)
-    perform(order_item_id, :warning_retirement_error) { |order_item| new(order_item).retire }
-  end
-end
-
 require File.expand_path('../dummy/config/environment', __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'

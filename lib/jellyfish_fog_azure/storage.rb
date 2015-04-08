@@ -1,7 +1,7 @@
 module Jellyfish
   module Fog
     module Azure
-      class Storage < ::Provisioner
+      class Storage < Jellyfish::Provisioner
         def provision
           details = order_item.answers
           storage = nil

@@ -1,7 +1,7 @@
 module Jellyfish
   module Fog
     module Azure
-      class Databases < ::Provisioner
+      class Databases < Jellyfish::Provisioner
         def provision
           details = order_item.answers
           server = nil
